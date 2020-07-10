@@ -1,0 +1,52 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'war'
+}
+
+group = 'com.rihongo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: "jackson-data-bind"
+    }
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile('org.springframework.session:spring-session-data-redis')
+    compile group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
+
+    compile('org.springframework.boot:spring-boot-starter-aop')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('com.h2database:h2')
+    compileOnly('org.projectlombok:lombok')
+
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    runtime('com.h2database:h2')
+
+//    testCompile('org.springframework.security:spring-boot-security-test')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'local' : profile
+sourceSets {
+    main {
+        resources {
+            srcDirs "src/main/resources", "src/main/resource-env/${profile}"
+        }
+    }
+}
