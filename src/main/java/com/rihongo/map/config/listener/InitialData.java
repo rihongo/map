@@ -1,4 +1,4 @@
-package com.rihongo.map.config;
+package com.rihongo.map.config.listener;
 
 import com.rihongo.map.model.entities.User;
 import com.rihongo.map.model.repository.UserRepository;
@@ -10,11 +10,14 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-@Profile({ "local", "test"})
+import java.util.ArrayList;
+import java.util.List;
+
+@Profile({"local", "test"})
 @Component
 @Slf4j
 @AllArgsConstructor
-public class InitialDataConfig implements ApplicationListener<ContextRefreshedEvent> {
+public class InitialData implements ApplicationListener<ContextRefreshedEvent> {
 
     private UserRepository userRepository;
 
@@ -23,10 +26,17 @@ public class InitialDataConfig implements ApplicationListener<ContextRefreshedEv
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.info("Started after Spring boot application !");
-        userRepository.save(User.builder()
+        List<User> users = new ArrayList<>();
+        users.add(User.builder()
                 .userId("tester")
                 .password(passwordEncoder.encode("password"))
-                .build()
-        );
+                .build());
+
+        users.add(User.builder()
+                .userId("test1234")
+                .password(passwordEncoder.encode("test1234"))
+                .build());
+
+        userRepository.saveAll(users);
     }
 }

@@ -23,7 +23,7 @@ public class RedisTest {
     private UserRedisRepository userRedisRepository;
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         userRedisRepository.deleteAll();
     }
 

@@ -1,16 +1,16 @@
 package com.rihongo.map.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
 @Component
+@RequiredArgsConstructor
 public class MessageUtil {
 
-    @Autowired
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
 
     public String getMessage(String messageKey) {
         return getMessage(messageKey, null, Locale.getDefault());

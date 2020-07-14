@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>지도 검색</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/pagination.css">
 </head>
 <body>
-test
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="page-header">
+                <h1>장소 검색</h1>
+            </div>
+            <div style="margin-bottom: 15px;">
+                키워드 : <input type="text" name="query">
+                <input type="button" name="search" value="검색">
+            </div>
+            <div id="data-container"></div>
+            <div id="pagination-container"></div>
+        </div>
+        <div class="col">
+            <div class="page-header" style="margin-bottom: 20px;">
+                <h1>인기 검색어</h1>
+                <input type="button" name="refreshTopKeyword" value="갱신">
+            </div>
+            <div class="list-group" id="top-data-container">
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
+<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="/js/external/pagination.min.js"></script>
+<script src="/js/map_search.js"></script>
 </html>
