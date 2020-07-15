@@ -50,6 +50,14 @@ public class MapControllerTest {
                 .build();
     }
 
+    @Test
+    public void notLoginRedirectTest() throws Exception {
+
+        this.mvc.perform(get("/map"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
+    }
+
     @WithMockUser("test1234")
     @Test
     public void searchTest() throws Exception {

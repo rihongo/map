@@ -4,11 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.rihongo.map.exception.APICommunicationException;
 import com.rihongo.map.model.dto.map.MapSearchResponseDto;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.webservices.client.WebServiceClientTest;
@@ -31,10 +28,10 @@ import static org.hamcrest.core.Is.is;
 @TestPropertySource(locations = "classpath:/api.properties")
 public class MapSearchRetrofitTest {
 
-    @Value("${kakao.api.key}")
+    @Value("${api.key.kakao}")
     private String apiKey;
 
-    @Value("${kakao.api.url.map}")
+    @Value("${api.url.kakaoMap}")
     private String searchUrl;
 
     @Test

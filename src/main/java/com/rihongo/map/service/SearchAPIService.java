@@ -14,4 +14,9 @@ public interface SearchAPIService {
             , @Query("page") int page
             , @Query("size") int size);
 
+    @GET("keyword.json")
+    Call<MapSearchResponseDto> getMapByKeyword(@Query("query") String keyword
+            , @Query("page") int page
+            , @Query("size") int size);
+
 }

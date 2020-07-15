@@ -10,12 +10,12 @@ import java.util.Map;
 
 @Configuration
 @PropertySource("classpath:api.properties")
-@ConfigurationProperties(prefix = "kakao.api")
+@ConfigurationProperties(prefix = "api")
 public class APIPropertiesConfig {
 
     @Getter
     @Setter
-    private String key;
+    private Map<String, String> key;
 
     @Getter
     @Setter

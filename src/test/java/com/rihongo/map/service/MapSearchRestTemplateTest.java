@@ -21,10 +21,10 @@ import static org.hamcrest.core.Is.is;
 @TestPropertySource(locations = "classpath:/api.properties")
 public class MapSearchRestTemplateTest {
 
-    @Value("${kakao.api.key}")
+    @Value("${api.key.kakao}")
     private String apiKey;
 
-    @Value("${kakao.api.url.map}")
+    @Value("${api.url.kakaoMap}")
     private String searchUrl;
 
     @Test
